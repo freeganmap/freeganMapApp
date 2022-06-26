@@ -1,9 +1,9 @@
-import { FontAwesome } from '@expo/vector-icons';
-import { Platform, ScrollView, StyleSheet } from 'react-native';
+import { EvilIcons, FontAwesome, FontAwesome5 } from '@expo/vector-icons';
+import { Button, Platform, ScrollView, StyleSheet } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 import { ColorSchemeName, Pressable, Image } from 'react-native';
 import useColorScheme from '../hooks/useColorScheme';
-import Colors from '../constants/Colors';
+import Colors, { highlightColor, RALEWAY_BOLD, ROBOTO_MONO_BOLD, ROBOTO_MONO_REG, tokenColor } from '../constants/Colors';
 import { Text, View } from '../components/Themed';
 import { useContext, useReducer, useState } from 'react';
 import { uniq, without } from 'lodash';
@@ -58,6 +58,9 @@ export default function ModalScreen() {
     neighborhood,
   } = locationObj;
 
+  const creatorProfileImageUri = 'https://lh3.googleusercontent.com/a-/AOh14GhQ4HNn26yZ8PsAUqONvXlvod_0bH0WB_x76TV7lg=s96-c';
+  const creatorName = 'Amy Hua';
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -94,14 +97,33 @@ export default function ModalScreen() {
           }}
           resizeMode="cover"
         />
+        <View style={tw`mb-0 mt-5`}>
+          <View style={{
+            ...tw`bg-green-400 p-3 flex flex-row relative`,
+            borderRadius: 6,
+          }}>
+            <EvilIcons name="check" style={tw`mr-0.5 -mt-0.5`} size={38} color="white" />
+            <Text style={{
+              ...tw`text-lg text-white pl-1 pr-5`,
+              fontFamily: RALEWAY_BOLD
+            }}>Claim this free item</Text>
+            <View style={tw`absolute mt-0.5 right-0 py-3 px-5 text-right bg-transparent flex flex-row`}>
+              <FontAwesome5 name="coins" style={tw`bg-transparent mr-2 mt-1`} size={16} color="white" />
+              <Text style={{
+                ...tw`text-base text-white`,
+                fontFamily: ROBOTO_MONO_BOLD
+              }}>+ 50</Text>
+            </View>
+          </View>
+        </View>
         <Text style={{
           ...LABEL_STYLE,
-          ...tw`mt-8 mb-2`,
+          ...tw`mt-5 mb-2`,
         }}>
           Description
         </Text>
         <Text style={{
-          ...tw`text-lg mb-3`,
+          ...tw`text-base mb-3`,
           fontFamily: 'Poppins_400Regular',
         }}>
           {d.description}
@@ -118,13 +140,77 @@ export default function ModalScreen() {
             value={formatListingPickupMethod(d)}
           />
         </View>
-        <View style={tw`mt-6 mb-3`}>
-          <Text style={{
-            ...tw`text-base text-gray-400`,
-            fontFamily: 'Poppins_600SemiBold',
-          }}>
-            Posted by
-          </Text>
+        {
+          creatorProfileImageUri && (
+            <>
+              <View style={tw`mt-6 mb-0`}>
+                <Text style={{
+                  ...tw`text-base text-gray-400`,
+                  fontFamily: 'Poppins_600SemiBold',
+                }}>
+                  Posted by
+                </Text>
+              </View>
+              <View style={tw`mt-6 mb-3 flex flex-row`}>
+                <Image
+                  source={{
+                    uri: creatorProfileImageUri,
+                  }}
+                  style={tw`rounded-full h-12 w-12 mt-0.5`}
+                />
+                <View style={tw`ml-5`}>
+                  <Text style={{
+                    ...tw`mt-0 text-lg`,
+                    fontFamily: RALEWAY_BOLD
+                  }}>
+                    {creatorName}
+                  </Text>
+                  <View style={tw`flex flex-row items-center`}>
+                    <FontAwesome5 name="coins" style={tw`mr-2 mt-1`} size={16} color={tokenColor} />
+                    <Text style={{
+                      ...tw`text-black text-base mr-3`,
+                      fontFamily: ROBOTO_MONO_BOLD,
+                      color: tokenColor
+                    }}>
+                       520
+                    </Text>
+                    <View style={tw`flex flex-row mt-1 opacity-30`}>
+                      {/* pencil */}
+                      <EvilIcons name="pencil" style={tw`mr-0.5`} size={24} color="black" />
+                      <Text style={{
+                        ...tw`text-black text-base mr-3 -mt-0.5`,
+                        fontFamily: ROBOTO_MONO_REG,
+                      }}>
+                        3
+                      </Text>
+                      {/* heart */}
+                      <EvilIcons name="heart" style={tw`mr-0.5 mt-0.5`} size={24} color="black" />
+                      <Text style={{
+                        ...tw`text-black text-base mr-3 mt-0`,
+                        fontFamily: ROBOTO_MONO_REG,
+                      }}>
+                        2
+                      </Text>
+                      {/* check */}
+                      <EvilIcons name="check" style={tw`mr-0.5 mt-0.5`} size={24} color="black" />
+                      <Text style={{
+                        ...tw`text-black text-base mr-3`,
+                        fontFamily: ROBOTO_MONO_REG,
+                      }}>
+                        1
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </>
+          )
+        }
+        <View style={tw`mt-14`}>
+          <Button
+            title="Report this listing"
+            color={highlightColor}
+          />
         </View>
       </View>
     </ScrollView>

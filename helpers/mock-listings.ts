@@ -1,10 +1,28 @@
 import { ListingCondition, ListingPickupMethod } from "../types";
 import { getImageUrl, MOCK_LISTING_PHOTO_CIDS } from "./image-helpers";
 
-export default MOCK_LISTING_PHOTO_CIDS.map((cid: string) => ({
+export default MOCK_LISTING_PHOTO_CIDS.map((cid: string, i: number) => ({
   imageUrl: getImageUrl(cid),
-  title: 'Moved out! Beautiful healthy house plants left on the sidewalk.',
-  description: "I have a 3-year old banana plant and a fruit tree that I can't take care of anymore. They are out on the street by the SE corner of 24th.",
+  title: (
+    i === 0 ?
+    'Moved out! Beautiful healthy house plants left on the sidewalk.'
+    : i === 1 ?
+    'Hello Kitty Side Table, Great Condition'
+    : i === 2 ?
+    'Got leg problems? Get your crutches, braces, wheelchair.'
+    :
+    'Large microwave, it works great!'
+  ),
+  description: (
+    i === 0 ?
+    "I have a 3-year old banana plant and a fruit tree that I can't take care of anymore. They are out on the street by the SE corner of 24th."
+    : i === 1 ?
+    "Free Hello Kitty drawer. Works great."
+    : i === 2 ?
+    "A bunch of leg problem solutions, including a full wheelchair, leg braces, and many crutches. Worn but works."
+    :
+    "Free, left on the sidewalk. Great condition"
+  ),
   timestamp: 1656184163261,
   coordinates: { neighborhood: 'Manhattan - Flatiron District' },
   createdAt: 1656184163261,

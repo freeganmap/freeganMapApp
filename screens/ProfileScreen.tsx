@@ -13,6 +13,7 @@ import Web3Auth from '@web3auth/react-native-sdk';
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
   const { user } = useContext(AppContext);
   if (!user) return null;
+  const currBalance = 520
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -45,7 +46,7 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
               ...tw`text-xl text-gray-700`,
               color: '#7d6528',
               fontFamily: ROBOTO_MONO_BOLD,
-            }}>3,635 $FGM</Text>
+            }}>{currBalance} $FGM</Text>
           </View>
           <View style={tw`flex`}>
             <View style={tw`flex flex-row mr-3 mb-1`}>
@@ -53,7 +54,7 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
               <Text style={{
                 ...tw`text-sm text-gray-700 w-14`,
                 fontFamily: ROBOTO_MONO_BOLD,
-              }}>40 </Text>
+              }}>3 </Text>
               <Text style={{
                 ...tw`text-sm text-gray-500`,
                 fontFamily: ROBOTO_MONO_REG,
@@ -64,7 +65,7 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
               <Text style={{
                 ...tw`text-sm text-gray-700 w-14`,
                 fontFamily: ROBOTO_MONO_BOLD,
-              }}>40 </Text>
+              }}>2 </Text>
               <Text style={{
                 ...tw`text-sm text-gray-500`,
                 fontFamily: ROBOTO_MONO_REG,
@@ -75,7 +76,7 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
               <Text style={{
                 ...tw`text-sm text-gray-700 w-14`,
                 fontFamily: ROBOTO_MONO_BOLD,
-              }}>21 </Text>
+              }}>1 </Text>
               <Text style={{
                 ...tw`text-sm text-gray-500`,
                 fontFamily: ROBOTO_MONO_REG,

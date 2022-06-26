@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   title: {
     ...tw`text-sm text-gray-700 pr-1 font-bold overflow-hidden`,
   },
-  titleWrapper: tw`pr-3`,
+  titleWrapper: tw`pr-4`,
   time: {
     ...tw`pt-2 text-gray-500`,
   },

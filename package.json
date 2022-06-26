@@ -55,7 +55,8 @@
     "react-native-screens": "~3.11.1",
     "react-native-web": "0.17.7",
     "tailwind-react-native-classnames": "^1.5.1",
-    "twrnc": "^3.3.3"
+    "twrnc": "^3.3.3",
+    "web3.storage": "^4.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
