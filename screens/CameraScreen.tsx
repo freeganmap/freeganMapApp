@@ -210,8 +210,6 @@ export default function App() {
           </TouchableOpacity>
         </View>
       )}
-
-      <StatusBar style="auto" />
     </View>
   )
 }

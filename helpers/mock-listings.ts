@@ -3,7 +3,7 @@ import { getImageUrl, MOCK_LISTING_PHOTO_CIDS } from "./image-helpers";
 
 export default MOCK_LISTING_PHOTO_CIDS.map((cid: string) => ({
   imageUrl: getImageUrl(cid),
-  title: 'Empty my fridge! Fresh produce just bought from Safeway.',
+  title: 'Moved out! Beautiful healthy house plants left on the sidewalk.',
   description: 'Lots of broccoli, fruits, and vegetables in my fridge. See photos for details.',
   timestamp: 1656184163261,
   location: { neighborhood: 'Manhattan - Flatiron District' },
