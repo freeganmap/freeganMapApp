@@ -31,5 +31,6 @@ export const RALEWAY_SEMI = 'Raleway_600SemiBold';
 export const POPPINS_REG = 'Poppins_400Regular';
 export const POPPINS_SEMI = 'Poppins_600SemiBold';
 export const POPPINS_BOLD = 'Poppins_700Bold';
+export const ROBOTO_MONO_REG = 'RobotoMono_400Regular';
 export const ROBOTO_MONO_MED = 'RobotoMono_500Medium';
 export const ROBOTO_MONO_BOLD = 'RobotoMono_600SemiBold';

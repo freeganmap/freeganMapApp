@@ -52,23 +52,19 @@ export default function App() {
       });
     } catch(e) {}
   }
-  const onUserConnect = (data: any) => {
+  const onUserConnect = async (data: any) => {
     setAuthenticated(true);
-    setUser({
+    const user = {
       ...data.userInfo,
       ...data.privKey,
-    })
-    fetch('//localhost:3000/users', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        firstParam: 'yourValue',
-        secondParam: 'yourOtherValue'
-      })
-    })
+    }
+    setUser(user)
+    try {
+      const resp = createOrUpdateUser(user)
+      resp.json()
+    } catch(e) {
+
+    }
   };
   // console.warn('web3auth', web3auth)
   if (web3auth) {

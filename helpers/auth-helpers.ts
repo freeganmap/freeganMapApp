@@ -1,4 +1,4 @@
-const API_ROOT = `//localhost:3000`;
+const API_ROOT = `https://6485-38-96-179-206.ngrok.io`;
 
 export const createOrUpdateUser = async (user: any) => {
   try {
@@ -6,7 +6,7 @@ export const createOrUpdateUser = async (user: any) => {
     // @ts-ignore
     userResp = userResp.json()
     // @ts-ignore
-    if (userResp && userResp.data) {
+    if (userResp && userResp.json) {
       return;
     }
     console.log('TRY', user)

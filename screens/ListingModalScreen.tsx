@@ -51,7 +51,7 @@ export default function ModalScreen() {
     fontFamily: 'Poppins_600SemiBold',
   };
 
-  const locationObj = d.location || {
+  const locationObj = d.coordinates || {
     neighborhood: 'Manhattan - Flatiron',
   };
   const {

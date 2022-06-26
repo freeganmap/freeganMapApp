@@ -39,7 +39,7 @@ const MapListingThumbnail = ({
     imageUrl,
     title,
     lastAvailableAt,
-    location,
+    coordinates, // TOOD: how far x.xmi
   } = listing;
   const fromNow = dayjs(lastAvailableAt).fromNow();
   return (

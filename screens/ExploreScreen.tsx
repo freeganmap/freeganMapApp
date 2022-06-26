@@ -22,6 +22,7 @@ import ListingModalScreen from '../screens/ListingModalScreen';
 import AppContext from '../contexts/app-context';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import { createOrUpdateUser } from '../helpers/auth-helpers';
 
 const { width, height } = Dimensions.get('window');
 
@@ -96,18 +97,6 @@ export default function ExploreScreen({ navigation }: RootTabScreenProps<'Explor
     })();
     
   }, []);
-
-  fetch('//localhost:3000/users', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        firstParam: 'yourValue',
-        secondParam: 'yourOtherValue'
-      })
-    })
 
   if (!location) return null;
   return (

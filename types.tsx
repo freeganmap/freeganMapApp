@@ -67,13 +67,14 @@ export enum ListingCategory {
 export type Listing = {
   title: string;
   imageUrl: string;
-  location: any;
+  coordinates: any;
   description: string;
   condition: ListingCondition;
   category: ListingCategory;
+  claimerId: string, // if null, still available
   creatorId: number;
   creatorType: ListingCreatorType;
   pickupMethod: ListingPickupMethod,
   lastAvailableAt: number,
-  createdAt: number
+  createdAt: number,
  }
