@@ -73,7 +73,7 @@ export default function ModalScreen() {
             ...tw`text-base text-gray-500`,
             fontFamily: 'Poppins_400Regular'
           }}>
-            {neighborhood}
+            {neighborhood} · 0.5 mi away
           </Text>
         </View>
         <View style={tw`mb-3`}>

@@ -98,7 +98,11 @@ export default function ExploreScreen({ navigation }: RootTabScreenProps<'Explor
     
   }, []);
 
-  if (!location) return null;
+  if (!location) return (
+    <View style={styles.container}>
+      <Text style={tw`text-lg text-black`}>Loading...</Text>
+    </View>
+  );
   return (
     <View style={styles.container}>
       {/* <Text>{JSON.stringify(location)}</Text> */}
