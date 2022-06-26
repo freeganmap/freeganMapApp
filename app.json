@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "freeganmapapp",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
@@ -19,7 +19,14 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app uses your location to alert you of free items near you, reward valid efforts, and coordinate exchanges.",
+        "NSCameraUsageDescription": "Allow Freegan Map to use your camera to post listings",
+        "NSLocationWhenInUseUsageDescription": "Allow Freegan Map to use your location",
+        "NSPhotoLibraryUsageDescription": "Give Freegan Map permission to access your photos for post creation.",
+        "NSAllowsArbitraryLoads": true
+      }
     },
     "android": {
       "adaptiveIcon": {

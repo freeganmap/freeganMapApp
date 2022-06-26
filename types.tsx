@@ -33,3 +33,47 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> = Composit
   BottomTabScreenProps<RootTabParamList, Screen>,
   NativeStackScreenProps<RootStackParamList>
 >;
+
+export enum ListingCondition {
+  NewAndWorks,
+  GreatAndWorks,
+  WornAndWorks,
+  NeedsRepair
+}
+
+export enum ListingCreatorType {
+  Owner,
+  Reporter
+}
+
+export enum ListingPickupMethod {
+  Curbside,
+  Pickup
+}
+
+export enum ListingCategory {
+  Appliances,
+  Bicycles,
+  Electronics,
+  Food,
+  Furniture,
+  LargeSales,
+  MovingSupplies,
+  PlantsAndGardening,
+  Vehicles,
+  GeneralStuff,
+}
+
+export type Listing = {
+  title: string;
+  imageUrl: string;
+  location: any;
+  description: string;
+  condition: ListingCondition;
+  category: ListingCategory;
+  creatorId: number;
+  creatorType: ListingCreatorType;
+  pickupMethod: ListingPickupMethod,
+  lastAvailableAt: number,
+  createdAt: number
+ }

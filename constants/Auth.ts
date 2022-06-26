@@ -1,0 +1,1 @@
+export const Web3AuthIOClientId = 'BKDozChhCUYCiUoKGIbaej90d9PVj6Nl5KrYPKeRggYkHnZTUb73rDLdsKRFeW8i1Ol5U15ioyF66PXbHVVVA_g';
