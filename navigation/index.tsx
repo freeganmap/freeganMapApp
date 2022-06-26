@@ -21,7 +21,7 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import ExploreScreen from '../screens/ExploreScreen';
 import SavedScreen from '../screens/SavedScreen';
 import CameraScreen from '../screens/CameraScreen';
-import NewCameraScreen from '../screens/NewCameraScreen';
+// import NewCameraScreen from '../screens/NewCameraScreen';
 import LoginScreen from '../screens/LoginScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
@@ -218,7 +218,7 @@ function BottomTabNavigator() {
         />
         <BottomTab.Screen
           name="Post"
-          component={NewCameraScreen}
+          component={CameraScreen}
           options={{
             title: ({ color }) => <Text style={styles.bigLabel}>Post</Text>,
             tabBarIcon: ({ color }) => <View style={styles.bigView}>

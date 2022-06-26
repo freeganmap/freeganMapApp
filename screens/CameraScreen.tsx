@@ -4,6 +4,10 @@ import {StyleSheet, Text, View, TouchableOpacity, Alert, ImageBackground, Image}
 import {Camera} from 'expo-camera'
 import tw from 'tailwind-react-native-classnames'
 import { Ionicons } from '@expo/vector-icons'
+import { RALEWAY_BOLD } from '../constants/Colors'
+import StartPost from '../components/StartPost'
+
+
 let camera: Camera
 export default function App() {
   const [startCamera, setStartCamera] = React.useState(false)
@@ -23,12 +27,13 @@ export default function App() {
   }
   const __takePicture = async () => {
     const photo: any = await camera.takePictureAsync()
-    console.log(photo)
     setPreviewVisible(true)
     //setStartCamera(false)
     setCapturedImage(photo)
   }
-  const __savePhoto = () => {}
+  const __savePhoto = async (file: string) => {
+    // const resp = await uploadFileToBucket(file);
+  }
   const __retakePicture = () => {
     setCapturedImage(null)
     setPreviewVisible(false)
@@ -52,7 +57,133 @@ export default function App() {
   }
   return (
     <View style={styles.container}>
-      {startCamera ? (
+      <View
+          style={{
+            flex: 1,
+            width: '100%'
+          }}
+        >
+          {previewVisible && capturedImage ? (
+            <CameraPreview photo={capturedImage} savePhoto={__savePhoto} retakePicture={__retakePicture} />
+          ) : (
+            <Camera
+              type={cameraType}
+              flashMode={flashMode}
+              style={{flex: 1}}
+              ref={(r) => {
+                camera = r;
+                // start camera right away
+                __startCamera()
+              }}
+            >
+              <View
+                style={{
+                  flex: 1,
+                  width: '100%',
+                  backgroundColor: 'transparent',
+                  flexDirection: 'row'
+                }}
+              >
+                <View
+                  style={{
+                    position: 'absolute',
+                    left: '5%',
+                    top: '10%',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between'
+                  }}
+                >
+                  <TouchableOpacity
+                    onPress={__handleFlashMode}
+                    style={{
+                      borderRadius: '50%',
+                      height: 25,
+                      width: 25
+                    }}
+                  >
+                    <View style={{
+                      ...tw`h-12 w-12 p-1 bg-white text-black`,
+                      borderRadius: 50,
+                      shadowColor: 'black',
+                      shadowRadius: 4,
+                      shadowOpacity: 0.33,
+                    }}>
+                      <Ionicons
+                        style={tw`mt-0.5 mx-1 h-8 w-8`}
+                        name={
+                          flashMode === 'off' ? 'flash-off' : 'flash'
+                        } size={30} color="black" />
+                    </View>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={__switchCamera}
+                    style={{
+                      marginTop: 40,
+                      borderRadius: '50%',
+                      height: 25,
+                      width: 25
+                    }}
+                  >
+                    {
+                      cameraType === 'front' ?
+                      <View style={{
+                        ...tw`h-12 w-12 p-1 bg-black text-white`,
+                        borderRadius: 50,
+                        shadowColor: 'black',
+                        shadowRadius: 4,
+                        shadowOpacity: 0.33,
+                      }}>
+                        <Ionicons
+                          style={tw`mt-0.5 mx-1 h-8 w-8`}
+                          name="camera-reverse-outline" size={30} color="white" />
+                      </View>
+                      :
+                      <View style={{
+                        ...tw`h-12 w-12 p-1 bg-white text-black`,
+                        borderRadius: 50,
+                      }}>
+                        <Ionicons
+                          style={tw`mt-0.5 mx-1 h-8 w-8`}
+                          name="camera-reverse-outline" size={30} color="black" />
+                      </View>
+                    }
+                  </TouchableOpacity>
+                </View>
+                <View
+                  style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    flexDirection: 'row',
+                    flex: 1,
+                    width: '100%',
+                    padding: 20,
+                    justifyContent: 'space-between'
+                  }}
+                >
+                  <View
+                    style={{
+                      alignSelf: 'center',
+                      flex: 1,
+                      alignItems: 'center'
+                    }}
+                  >
+                    <TouchableOpacity
+                      onPress={__takePicture}
+                      style={{
+                        width: 70,
+                        height: 70,
+                        bottom: 0,
+                        borderRadius: 50,
+                        backgroundColor: '#fff'
+                      }}
+                    />
+                  </View>
+                </View>
+              </View>
+            </Camera>
+          )}
+        </View>
+      {/* {startCamera ? (
         <View
           style={{
             flex: 1,
@@ -67,7 +198,9 @@ export default function App() {
               flashMode={flashMode}
               style={{flex: 1}}
               ref={(r) => {
-                camera = r
+                camera = r;
+                // start camera right away
+                __startCamera()
               }}
             >
               <View
@@ -178,38 +311,10 @@ export default function App() {
           )}
         </View>
       ) : (
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: '#fff',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-        >
-          <TouchableOpacity
-            onPress={__startCamera}
-            style={{
-              width: 130,
-              borderRadius: 4,
-              backgroundColor: '#14274e',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: 40
-            }}
-          >
-            <Text
-              style={{
-                color: '#fff',
-                fontWeight: 'bold',
-                textAlign: 'center'
-              }}
-            >
-              Take picture
-            </Text>
-          </TouchableOpacity>
-        </View>
-      )}
+        <StartPost startCamera={__startCamera} />
+      )} */}
+
+      <StatusBar style="auto" />
     </View>
   )
 }
@@ -224,7 +329,15 @@ const styles = StyleSheet.create({
 })
 
 const CameraPreview = ({photo, retakePicture, savePhoto}: any) => {
-  console.log('sdsfds', photo)
+  /*
+  photo:
+   {
+    "height": 4224,
+    "uri": "file:///var/mobile/Containers/Data/Application/FD5F7ABC-767E-4F96-8FBC-169FFF472410/Library/Caches/ExponentExperienceData/%2540anonymous%252FfreeganMapApp-154c0145-823b-47aa-887c-d8503e2aabf5/Camera/4180AC9C-7686-4E8F-A943-6FD72DDBB1DC.jpg",
+    "width": 2154,
+  }
+  */
+ console.log('photo', photo)
   return (
     <View
       style={{
@@ -244,33 +357,35 @@ const CameraPreview = ({photo, retakePicture, savePhoto}: any) => {
           style={{
             flex: 1,
             flexDirection: 'column',
-            padding: 15,
-            justifyContent: 'flex-end'
+            justifyContent: 'flex-end',
+            ...tw`pt-2 pb-4 absolute -bottom-4 left-0 right-0`,
+            backgroundColor: 'rgba(255,255,255,0.65)',
           }}
         >
           <View
             style={{
               flexDirection: 'row',
-              justifyContent: 'space-between'
+              justifyContent: 'space-between',
+              ...tw`bg-transparent w-full`
             }}
           >
             <TouchableOpacity
               onPress={retakePicture}
               style={{
                 width: 130,
-                height: 40,
-
                 alignItems: 'center',
-                borderRadius: 4
+                borderRadius: 4,
+                ...tw`bg-transparent`
               }}
             >
               <View style={{
-                ...tw`py-1 px-2`,
+                ...tw`bg-transparent py-1 px-2`,
                 borderRadius: 5,
               }}>
                 <Text
                   style={{
-                    ...tw`py-1 px-2 bg-white text-black text-base`,
+                    ...tw`bg-transparent py-3 px-2 text-black text-base`,
+                    fontFamily: RALEWAY_BOLD,
                   }}
                 >
                   Retake
@@ -280,20 +395,20 @@ const CameraPreview = ({photo, retakePicture, savePhoto}: any) => {
             <TouchableOpacity
               onPress={savePhoto}
               style={{
-                width: 130,
-                height: 40,
-
+                width: 160,
                 alignItems: 'center',
-                borderRadius: 4
+                borderRadius: 4,
+                ...tw`bg-transparent`
               }}
             >
               <View style={{
-                ...tw`py-1 px-2`,
+                ...tw`py-1 px-2 bg-transparent`,
                 borderRadius: 5,
               }}>
                 <Text
                   style={{
-                    ...tw`py-1 px-2 bg-white text-black text-base`,
+                    ...tw`bg-transparent flex flex-row py-3 px-2 text-black text-base`,
+                    fontFamily: RALEWAY_BOLD,
                   }}
                 >
                   Save Photo

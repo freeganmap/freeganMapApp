@@ -20,7 +20,7 @@ import tw from 'tailwind-react-native-classnames';
 import MapListingThumbnail from '../components/MapListingThumbnail';
 import ListingModalScreen from '../screens/ListingModalScreen';
 import AppContext from '../contexts/app-context';
-import Colors from '../constants/Colors';
+import Colors, { RALEWAY_BOLD } from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import { createOrUpdateUser } from '../helpers/auth-helpers';
 
@@ -99,8 +99,12 @@ export default function ExploreScreen({ navigation }: RootTabScreenProps<'Explor
   }, []);
 
   if (!location) return (
-    <View style={styles.container}>
-      <Text style={tw`text-lg text-black`}>Loading...</Text>
+    <View style={styles.containerCentered}>
+      <Text style={{
+        ...tw`text-lg text-black py-10 text-center`,
+        fontFamily: RALEWAY_BOLD,
+        width: 300,
+      }}>Locating free stuff around you, please hold on...</Text>
     </View>
   );
   return (
@@ -178,6 +182,11 @@ export default function ExploreScreen({ navigation }: RootTabScreenProps<'Explor
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  containerCentered: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   containerCentered: {
     flex: 1,
