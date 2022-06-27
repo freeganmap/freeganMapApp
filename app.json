@@ -26,7 +26,8 @@
         "NSLocationWhenInUseUsageDescription": "Allow Freegan Map to use your location",
         "NSPhotoLibraryUsageDescription": "Give Freegan Map permission to access your photos for post creation.",
         "NSAllowsArbitraryLoads": true
-      }
+      },
+      "bundleIdentifier": "ios"
     },
     "android": {
       "adaptiveIcon": {

@@ -6,6 +6,7 @@ import tw from 'tailwind-react-native-classnames'
 import { Ionicons } from '@expo/vector-icons'
 import { RALEWAY_BOLD } from '../constants/Colors'
 import StartPost from '../components/StartPost'
+import { storeIntoFilecoinWeb3StorageAndGetCid } from '../helpers/web3-storage'
 
 
 let camera: Camera
@@ -33,6 +34,8 @@ export default function App() {
   }
   const __savePhoto = async (file: string) => {
     // const resp = await uploadFileToBucket(file);
+    // TODO
+    // await storeIntoFilecoinWeb3StorageAndGetCid(file);
   }
   const __retakePicture = () => {
     setCapturedImage(null)

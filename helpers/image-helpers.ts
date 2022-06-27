@@ -7,6 +7,7 @@ export const MOCK_LISTING_PHOTO_CIDS = [
 ];
 
 export const getImageUrl = (cid: string) => `https://${cid}.ipfs.dweb.link/listing-photo-1.JPG`
+
 //  `https://dweb.link/ipfs/${cid}`;
 // https://dweb.link/ipfs/bafybeibzq24voljrhymlr5kdj6wrukpmgftrmwhaplgd4ptff7lfnpxwta
 // bafybeibzq24voljrhymlr5kdj6wrukpmgftrmwhaplgd4ptff7lfnpxwta.ipfs.dweb.link

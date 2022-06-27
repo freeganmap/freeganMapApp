@@ -107,6 +107,18 @@
       "dappShare": "",
       "privKey": "01fffc8dd75580d85ab7da33ea407395967a2391f967cf6c0c45f6b230a46d9d",
       "id": 9
+    },
+    {
+      "email": "foramyhua@gmail.com",
+      "name": "Amy Hua",
+      "profileImage": "https://lh3.googleusercontent.com/a-/AOh14GhQ4HNn26yZ8PsAUqONvXlvod_0bH0WB_x76TV7lg=s96-c",
+      "aggregateVerifier": "tkey-google-lrc",
+      "verifier": "torus",
+      "verifierId": "foramyhua@gmail.com",
+      "typeOfLogin": "google",
+      "dappShare": "",
+      "privKey": "01fffc8dd75580d85ab7da33ea407395967a2391f967cf6c0c45f6b230a46d9d",
+      "id": 10
     }
   ],
   "listings": []
